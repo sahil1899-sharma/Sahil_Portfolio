@@ -7,7 +7,7 @@ import * as THREE from 'three';
 
 function NeptuneGeometry() {
   const neptuneRef = useRef<THREE.Mesh>(null);
-  const ringGroupRef = useRef<THREE.Group>(null);
+  const ringMeshRef = useRef<THREE.Mesh>(null);
   
   // We utilize the high-res Jupiter gas bands texture but heavily tint it deep azure blue 
   // to create hyper-realistic Neptunian storm bands.
@@ -18,7 +18,7 @@ function NeptuneGeometry() {
   useFrame(({ clock }) => {
     const t = clock.getElapsedTime();
     if (neptuneRef.current) neptuneRef.current.rotation.y = t * 0.05;
-    if (ringGroupRef.current) ringGroupRef.current.rotation.y = t * -0.015;
+    if (ringMeshRef.current) ringMeshRef.current.rotation.y = t * -0.015;
   });
 
   return (
@@ -51,7 +51,7 @@ function NeptuneGeometry() {
       </mesh>
 
       {/* Ultra Faint Thin Ice Rings */}
-      <mesh ref={ringGroupRef} rotation={[Math.PI / 2, 0, 0]} castShadow receiveShadow>
+      <mesh ref={ringMeshRef} rotation={[Math.PI / 2, 0, 0]} castShadow receiveShadow>
         <ringGeometry args={[2.8, 2.85, 128]} />
         <meshStandardMaterial
           color="#00f0ff"

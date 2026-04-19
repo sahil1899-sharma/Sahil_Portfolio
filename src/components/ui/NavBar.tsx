@@ -225,8 +225,6 @@ export default function NavBar() {
                   transition={{ delay: i * 0.06 }}
                   className="flex items-center gap-3 px-4 py-3 group transition-colors duration-150"
                   style={{ borderBottom: i < CONTACTS.length - 1 ? '1px solid rgba(255,255,255,0.04)' : 'none' }}
-                  onMouseEnter={e => (e.currentTarget.style.background = `${c.color}10`)}
-                  onMouseLeave={e => (e.currentTarget.style.background = 'transparent')}
                 >
                   <span className="shrink-0">{c.icon}</span>
                   <div className="min-w-0">

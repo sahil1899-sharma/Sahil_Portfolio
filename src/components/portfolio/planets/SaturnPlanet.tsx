@@ -38,7 +38,7 @@ function createRingTexture(): THREE.DataTexture {
 function SaturnGeometry() {
   const saturnRef = useRef<THREE.Mesh>(null);
   const atmosphereRef = useRef<THREE.Mesh>(null);
-  const ringGroupRef = useRef<THREE.Group>(null);
+  const ringMeshRef = useRef<THREE.Mesh>(null);
   
   const colorMap = useTexture('/textures/saturn_color.jpg');
   const ringTex = useMemo(() => createRingTexture(), []);
@@ -47,7 +47,7 @@ function SaturnGeometry() {
     const t = clock.getElapsedTime();
     if (saturnRef.current) saturnRef.current.rotation.y = t * 0.04;
     if (atmosphereRef.current) atmosphereRef.current.rotation.y = t * 0.045; // Atmopsphere rotates slightly faster
-    if (ringGroupRef.current) ringGroupRef.current.rotation.y = t * -0.01;
+    if (ringMeshRef.current) ringMeshRef.current.rotation.y = t * -0.01;
   });
 
   return (
@@ -79,7 +79,7 @@ function SaturnGeometry() {
       </mesh>
 
       {/* Iced Rings */}
-      <mesh ref={ringGroupRef} rotation={[Math.PI / 2, 0, 0]} castShadow receiveShadow>
+      <mesh ref={ringMeshRef} rotation={[Math.PI / 2, 0, 0]} castShadow receiveShadow>
         <ringGeometry args={[3.0, 5.2, 128]} />
         <meshStandardMaterial
           alphaMap={ringTex}

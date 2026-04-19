@@ -1,10 +1,9 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useSoundEffects } from '@/hooks/useSoundEffects';
 
 export default function GlobalHUD() {
-  const [time, setTime] = useState('');
   const [audioOn, setAudioOn] = useState(false);
   const { toggleAmbience, playSelect } = useSoundEffects();
 
@@ -14,17 +13,6 @@ export default function GlobalHUD() {
     setAudioOn(nextState);
     toggleAmbience(nextState);
   };
-
-  // Zulu time clock
-  useEffect(() => {
-    const tick = () => {
-      const now = new Date();
-      setTime(now.toISOString().split('T')[1].slice(0, -1) + 'Z');
-    };
-    tick();
-    const interval = setInterval(tick, 1000);
-    return () => clearInterval(interval);
-  }, []);
 
   return (
     <div className="fixed inset-0 pointer-events-none z-[9995] overflow-hidden select-none">

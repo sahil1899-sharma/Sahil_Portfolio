@@ -12,6 +12,7 @@ export function useSoundEffects() {
     // Only initialize AudioContext after first user interaction to bypass browser autoplay policies
     const initAudio = () => {
       if (!audioCtxRef.current) {
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         audioCtxRef.current = new (window.AudioContext || (window as any).webkitAudioContext)();
       }
     };
@@ -106,8 +107,8 @@ export function useSoundEffects() {
       }
       
       // Smooth 2-second fade in
-      droneGainRef.current.gain.cancelScheduledValues(ctx.currentTime);
-      droneGainRef.current.gain.linearRampToValueAtTime(0.12, ctx.currentTime + 2);
+      droneGainRef.current?.gain.cancelScheduledValues(ctx.currentTime);
+      droneGainRef.current?.gain.linearRampToValueAtTime(0.12, ctx.currentTime + 2);
     } else {
       // Smooth 1-second fade out
       if (droneGainRef.current) {

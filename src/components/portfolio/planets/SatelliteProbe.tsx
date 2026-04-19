@@ -62,7 +62,7 @@ export default function SatelliteProbe({ orbitRadius = 4, orbitSpeed = 0.2 }) {
             <meshStandardMaterial color="#051024" metalness={0.9} roughness={0.2} />
           </mesh>
           {/* Solar Panel glowing grid lines */}
-          <mesh position={[0, 0.015, 0]}>
+          <mesh position={[0, 0.015, 0]} rotation={[-Math.PI/2, 0, 0]}>
             <planeGeometry args={[0.95, 0.55]} />
             <meshBasicMaterial 
                color="#00f0ff" 
@@ -70,7 +70,6 @@ export default function SatelliteProbe({ orbitRadius = 4, orbitSpeed = 0.2 }) {
                transparent 
                opacity={0.3} 
                side={THREE.DoubleSide} 
-               rotation={[-Math.PI/2, 0, 0]} 
             />
           </mesh>
         </group>
@@ -82,7 +81,7 @@ export default function SatelliteProbe({ orbitRadius = 4, orbitSpeed = 0.2 }) {
             <meshStandardMaterial color="#051024" metalness={0.9} roughness={0.2} />
           </mesh>
           {/* Solar Panel glowing grid lines */}
-          <mesh position={[0, 0.015, 0]}>
+          <mesh position={[0, 0.015, 0]} rotation={[-Math.PI/2, 0, 0]}>
             <planeGeometry args={[0.95, 0.55]} />
             <meshBasicMaterial 
                color="#00f0ff" 
@@ -90,7 +89,6 @@ export default function SatelliteProbe({ orbitRadius = 4, orbitSpeed = 0.2 }) {
                transparent 
                opacity={0.3} 
                side={THREE.DoubleSide} 
-               rotation={[-Math.PI/2, 0, 0]} 
             />
           </mesh>
         </group>
